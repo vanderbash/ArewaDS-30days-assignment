@@ -1,0 +1,25 @@
+# 8. Find the 10 most repeated words in the romeo_and_juliet.txt
+
+import re
+from collections import Counter
+
+# Read the content of the file
+with open('./data/romeo_and_juliet.txt', 'r') as file:
+    content = file.read()
+
+# Remove punctuation and convert to lowercase
+content = re.sub(r'[^\w\s]', '', content.lower())
+
+# Split the content into words
+words = content.split()
+
+# Count the occurrences of each word
+word_counts = Counter(words)
+
+# Get the 10 most common words and their frequencies
+top_10_words = word_counts.most_common(10)
+
+# Print the results
+print("The 10 most repeated words in 'romeo_and_juliet.txt' are:")
+for word, count in top_10_words:
+    print(f"{word}: {count}")
